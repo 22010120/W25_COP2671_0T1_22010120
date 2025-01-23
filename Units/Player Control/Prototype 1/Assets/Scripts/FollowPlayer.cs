@@ -8,12 +8,14 @@ public class FollowPlayer : MonoBehaviour
         
     }
 
+    //vars
+    private Vector3 offset = new Vector3(0,5,-7);
     //Objects
     public GameObject player;
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-       transform.position =  player.transform.position + new Vector3(0, 5, -7); //follows player object as it moves
+       transform.position =  player.transform.position + offset; //follows player object as it moves
     }
 }
