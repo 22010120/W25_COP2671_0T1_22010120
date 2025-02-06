@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 10.0f;
     public float gravityModifier;
     [SerializeField] bool isOnGround = true; //Player starts on ground. Change to false if player starts off ground
-  
+    public bool gameOver = false;
     void Start()
     {
         playerRb = GetComponent<Rigidbody>();
@@ -24,6 +25,12 @@ public class PlayerController : MonoBehaviour
         }
     }
     private void OnCollisionEnter(Collision collision){
-        isOnGround = true;
+        if (collision.gameObject.CompareTag("Ground")) {
+            isOnGround = true;
+        } else if (collision.gameObject.CompareTag("Obstacle")) {
+            gameOver = true;
+            Debug.Log("Game OVer");
+        }
     }
+
 }
