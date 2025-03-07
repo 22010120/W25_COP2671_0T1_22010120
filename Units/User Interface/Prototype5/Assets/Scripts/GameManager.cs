@@ -17,9 +17,8 @@ public class GameManager : MonoBehaviour
     public Button restartButton;
 
     void Start() {
-        
-        
     }
+
     public void StartGame(int difficulty){
         isGameActive = true;
         score = 0;
@@ -30,8 +29,9 @@ public class GameManager : MonoBehaviour
         
     }
     public void GameOver() {
-        gameOverText.gameObject.SetActive(true);
         isGameActive = false;
+        gameOverText.gameObject.SetActive(true);
+        
         restartButton.gameObject.SetActive(true);
     }
     IEnumerator SpawnTarget() {
