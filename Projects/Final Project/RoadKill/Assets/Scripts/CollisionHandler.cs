@@ -11,11 +11,11 @@ public class CollisionHandler : MonoBehaviour
         Enemy enemy = other.GetComponent<Enemy>();
         PlayerStats player = GetComponent<PlayerStats>();
         Debug.Log("Player collided with: " + other.gameObject.name);
+
         if(enemy != null){
             
         
             if(zoneType == ZoneType.FrontBack){
-                //this zone damages the enemy
                 enemy.TakeDamage(player.damage);
                 if(enemy.health <= 0) {
                     Destroy(other.gameObject);
