@@ -16,6 +16,12 @@ public class Enemy : MonoBehaviour
         
     }
 
+    void Update()
+    {
+        transform.LookAt(Player.transform); // Make the enemy look at the player
+        transform.Translate(Vector3.forward * speed * Time.deltaTime); // Move the enemy towards the player
+    }
+
     public void TakeDamage(int playerDamage){
         health -= playerDamage; // Reduce enemy health by the player's damage
         if (health <= 0) {

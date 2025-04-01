@@ -16,10 +16,11 @@ public class PlayerStats : MonoBehaviour
     public int money = 0;
 
     void Start() {
-        GameManager = GameObject.Find("GameManager");
-        EnemyPrefab = GameObject.Find("EnemyPrefab");
+        GameManager = GameObject.Find("GameManager"); // used to talk to the game manager
+        EnemyPrefab = GameObject.Find("EnemyPrefab");// used to talk to the enemy prefab
     }
 
+    //looks at the enemy prefab and gets the damage value from it
     public void TakeDamage(int enemyDamage) {
         health -= enemyDamage;
         if (health <= 0) {
