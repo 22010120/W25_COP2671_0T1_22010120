@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6205822618669779033
+--- !u!1001 &2415513491039142559
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: Enemy 1
       objectReference: {fileID: 0}
     - target: {fileID: 400056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       propertyPath: m_RootOrder
@@ -82,43 +82,43 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8455911133374425939}
+      addedObject: {fileID: 6197794565147515144}
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8546900109245748685}
+      addedObject: {fileID: 336351317341635209}
     - targetCorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1207736345236462518}
+      addedObject: {fileID: 8379942240253227017}
   m_SourcePrefab: {fileID: 100100000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
---- !u!1 &6205822618669682305 stripped
+--- !u!1 &2415513491039110215 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100056, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
-  m_PrefabInstance: {fileID: 6205822618669779033}
+  m_PrefabInstance: {fileID: 2415513491039142559}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8455911133374425939
+--- !u!114 &6197794565147515144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6205822618669682305}
+  m_GameObject: {fileID: 2415513491039110215}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9da0ba0ae1f6574eab55a6615c84182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
-  GameManager: {fileID: 0}
+  WaveManager: {fileID: 0}
   damage: 10
   health: 100
   speed: 3
---- !u!65 &8546900109245748685
+--- !u!65 &336351317341635209
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6205822618669682305}
+  m_GameObject: {fileID: 2415513491039110215}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -127,19 +127,19 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.4826519, y: 1.0187273, z: 0.37965068}
   m_Center: {x: -0.0011704564, y: 0.50564337, z: 0.0035113841}
---- !u!54 &1207736345236462518
+--- !u!54 &8379942240253227017
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6205822618669682305}
+  m_GameObject: {fileID: 2415513491039110215}
   serializedVersion: 4
   m_Mass: 10
   m_Drag: 0
@@ -159,4 +159,4 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 36
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
