@@ -6,7 +6,7 @@ public class SpawnManager : MonoBehaviour
 
     public static SpawnManager Instance { get; private set; }
     public GameObject enemyPrefab;
-    public Transform[] spawnPonints; 
+    public Transform[] spawnPoints; 
     private WaveManager waveManager;
 
     public float spawnRate = 2f;
@@ -34,8 +34,8 @@ public class SpawnManager : MonoBehaviour
     //spawn delay for spawning enemies
     IEnumerator spawnInSeconds()
     {
-        int index = Random.Range(0, spawnPonints.Length);
-        Instantiate(enemyPrefab, spawnPonints[index].position, spawnPonints[index].rotation);
+        int index = Random.Range(0, spawnPoints.Length);
+        Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation);
         Debug.Log("Count of spawn");
         yield return new WaitForSeconds(spawnDelay);
     }

@@ -1,13 +1,14 @@
 
 using UnityEngine;
 
-
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public int currentWave;
     public int score;
-    public bool isGameStarted = false;    
+    public bool isGameStarted = false;   
+    public GameObject MainMenu; 
+    private WaveManager waveManager;
     void Awake()
     {
 
@@ -21,6 +22,10 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0f; // Pause the game at the start
     }
 
+    void Start(){
+        waveManager = GetComponent<WaveManager>();
+    }
+
     private void Update(){
 
         if (!isGameStarted) return;
@@ -30,11 +35,13 @@ public class GameManager : MonoBehaviour
     }
     public void StartGame()
     {
+        MainMenu.gameObject.SetActive(false);
         isGameStarted = true;
         Time.timeScale = 1f; // Resume the game
         score = 0;
         currentWave = 1;
         Debug.Log("Game Started");
+        waveManager.publicStart();
     }
     public void GameOver()
     {

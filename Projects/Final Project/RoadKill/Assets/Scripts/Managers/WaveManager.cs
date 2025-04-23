@@ -14,9 +14,10 @@ public class WaveManager : MonoBehaviour
     {
         Debug.Log("WaveManager Awake");
         spawnManager = GetComponent<SpawnManager>();
+
     }
 
-    void Start(){
+    public void publicStart(){
         StartWave();
     }
 
