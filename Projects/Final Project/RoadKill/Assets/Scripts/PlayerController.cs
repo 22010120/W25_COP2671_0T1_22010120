@@ -1,25 +1,36 @@
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
-    [Header("Movement")]
-    private float baseSpeed = 20.0f;
-    private float turnSpeed = 45.0f;
-    private float horizontalInput;
-    private float forwardInput;
+    [SerializeField] float baseSpeed  = 20f;
+    [SerializeField] float turnSpeed  = 45f;
+    Rigidbody rb;
+    float h, v;
 
-    void Update(){
-        horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
-
-        // Move the player
-        transform.Translate(Vector3.forward * Time.deltaTime * baseSpeed * forwardInput);
-
-        // Rotate the player only when moving
-        if (forwardInput != 0)
-        {
-            transform.Rotate(Vector3.up, turnSpeed * horizontalInput * Time.deltaTime);
-        }
+    void Start() {
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        // prevent tipping
+        rb.constraints = RigidbodyConstraints.FreezeRotationX 
+                       | RigidbodyConstraints.FreezeRotationZ;
     }
 
+    void Update() {
+        h = Input.GetAxis("Horizontal");
+        v = Input.GetAxis("Vertical");
+    }
+
+    void FixedUpdate() {
+        // 1) forward/backward
+        Vector3 dir = transform.forward * v;
+        dir.y = 0;              // keep on ground plane
+        dir.Normalize();
+        Vector3 move = dir * baseSpeed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + move);
+
+        // 2) turning
+        if (v != 0) {
+            float turn = h * turnSpeed * Time.fixedDeltaTime;
+            rb.MoveRotation(rb.rotation * Quaternion.Euler(0, turn, 0));
+        }
+    }
 }
