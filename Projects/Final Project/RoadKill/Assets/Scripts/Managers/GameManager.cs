@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         if (isGameStarted)
         {
             isGamePaused = !isGamePaused; // Flips the pause state to whatever it is not
-            Time.timeScale = isGamePaused ? 1f : 0f; //if the game is paused, set the time scale to 0, otherwise set it to 1
+            Time.timeScale = !isGamePaused ? 1f : 0f; //if the game is paused, set the time scale to 0, otherwise set it to 1
             PauseMenu.SetActive(isGamePaused); // Show the pause menu if the game is paused, otherwise hide it
         }
     }
