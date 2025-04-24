@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Player = GameObject.Find("Player"); // Find the player object in the scene
-        waveManager = GameObject.Find("SpawnManager").GetComponent<WaveManager>();
+        waveManager = GameObject.Find("GameManager").GetComponent<WaveManager>();
         
     }
 
