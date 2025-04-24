@@ -6,8 +6,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     public int currentWave;
     public int score;
-    public bool isGameStarted = false;   
+    public bool isGameStarted = false;//game start state
+    public bool isGamePaused = false; //game pause state
     public GameObject MainMenu; 
+    public GameObject PauseMenu;
     private WaveManager waveManager;
     void Awake()
     {
@@ -30,14 +32,26 @@ public class GameManager : MonoBehaviour
 
         if (!isGameStarted) return;
 
-        //if (Input.GetKeyDown(KeyCode.Escape))
-            //TogglePause();
+        if (Input.GetKeyDown(KeyCode.Escape))
+            TogglePause();
+    }
+
+    private void TogglePause()
+    {
+        //Only toggle pause if the game has started
+        if (isGameStarted)
+        {
+            isGamePaused = !isGamePaused; // Flips the pause state to whatever it is not
+            Time.timeScale = isGamePaused ? 1f : 0f; //if the game is paused, set the time scale to 0, otherwise set it to 1
+            PauseMenu.SetActive(isGamePaused); // Show the pause menu if the game is paused, otherwise hide it
+        }
     }
     public void StartGame()
     {
         MainMenu.gameObject.SetActive(false);
         isGameStarted = true;
-        Time.timeScale = 1f; // Resume the game
+        Time.timeScale = 1f; //Starts game time scale
+        //Resets the game variables if restarting
         score = 0;
         currentWave = 1;
         Debug.Log("Game Started");
@@ -45,6 +59,10 @@ public class GameManager : MonoBehaviour
     }
     public void GameOver()
     {
+        isGameStarted = false;
+        isGamePaused = false;
+        Time.timeScale = 0f; //stops the game
+        MainMenu.gameObject.SetActive(true); //Goes back to the main menu and lets the player restart the game
         Debug.Log("Game Over");
     }
 }
