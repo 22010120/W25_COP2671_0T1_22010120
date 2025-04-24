@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public bool isGamePaused = false; //game pause state
     public GameObject MainMenu; 
     public GameObject PauseMenu;
+    public GameObject Timer;
+    public GameObject HealthBar;
+    public GameObject Score;
     private WaveManager waveManager;
     void Awake()
     {
@@ -49,6 +52,9 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         MainMenu.gameObject.SetActive(false);
+        Timer.gameObject.SetActive(true);
+        Score.gameObject.SetActive(true);
+        HealthBar.gameObject.SetActive(true);
         isGameStarted = true;
         Time.timeScale = 1f; //Starts game time scale
         //Resets the game variables if restarting

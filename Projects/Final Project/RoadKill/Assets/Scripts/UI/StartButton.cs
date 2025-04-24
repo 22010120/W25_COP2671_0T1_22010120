@@ -8,7 +8,7 @@ public class StartButton : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    void startButton(){
+    public void startButton(){
         gameManager.StartGame();
     }
 }

@@ -29,13 +29,7 @@ public class CollisionHandler : MonoBehaviour
             if(zoneType == ZoneType.FrontBack)
             {
                 enemy.TakeDamage(player.damage);// calls the TakeDamage function from the enemy script and passes in the players damage value
-                
-                Rigidbody enemyRigidbody = enemy.GetComponent<Rigidbody>(); // gets the rigidbody component from the enemy object
-                
-                float knockbackForce = 15f;
-                enemyRigidbody.AddForce(direction * knockbackForce, ForceMode.Impulse);
-                
-                StartCoroutine(StopEnemyMovement(enemyRigidbody, 0.5f)); // stops the enemy movement for 1 second
+    
                 //if that enemy has 0 health, destroy it
                 if(enemy.health <= 0) {
                     Destroy(other.gameObject);
@@ -58,13 +52,4 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    private IEnumerator StopEnemyMovement(Rigidbody enemyRigidbody, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        if(enemyRigidbody != null){
-            enemyRigidbody.linearVelocity = Vector3.zero; // Stop the enemy's movement
-            enemyRigidbody.angularVelocity = Vector3.zero; // Stop any rotation
-        }
-        
-    }
 }

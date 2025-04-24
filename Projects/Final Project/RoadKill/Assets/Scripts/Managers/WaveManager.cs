@@ -9,12 +9,13 @@ public class WaveManager : MonoBehaviour
     public int enemyRemaining;
     private int currentWave = 1;
     private SpawnManager spawnManager;
+    private PlayerStats playerStats;
 
     void Awake()
     {
         Debug.Log("WaveManager Awake");
         spawnManager = GetComponent<SpawnManager>();
-
+        playerStats = GameObject.Find("Player").GetComponent<PlayerStats>();
     }
 
     public void publicStart(){
@@ -23,6 +24,7 @@ public class WaveManager : MonoBehaviour
 
     void StartWave()
     {
+        playerStats.health = 100;
         enemySpawned += currentWave;
         enemyRemaining = enemySpawned;
         spawnManager.Spawn(enemySpawned);
