@@ -13,6 +13,7 @@ public class SpawnManager : MonoBehaviour
     public float spawnDelay = 1f;
     public int minX = -10;
     public int maxX = 10;
+    public int enemies = 0;
 
 
     void Awake(){
@@ -24,17 +25,19 @@ public class SpawnManager : MonoBehaviour
     //This gets the currentWave from game manager and times it by 2 to get the number of enemies to spawn
     public void Spawn(int enemySpawned)
         {
-            for (int i = enemySpawned; i > 0; i--){
+                enemies = enemySpawned;
                 StartCoroutine(spawnInSeconds());
-            }
-            
+       
+           
         }
         
     //spawn delay for spawning enemies
     IEnumerator spawnInSeconds()
     {
         int index = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation);
+        for (int i = enemies; i > 0; i--){
+            Instantiate(enemyPrefab, spawnPoints[index].position, spawnPoints[index].rotation);
+        }
         Debug.Log("Count of spawn");
         yield return new WaitForSeconds(spawnDelay);
     }

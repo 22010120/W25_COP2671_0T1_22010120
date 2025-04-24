@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject Timer;
     public GameObject HealthBar;
     public GameObject Score;
+    public GameObject gameOver;
     private WaveManager waveManager;
     void Awake()
     {
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
             TogglePause();
     }
 
-    private void TogglePause()
+    public void TogglePause()
     {
         //Only toggle pause if the game has started
         if (isGameStarted)
@@ -68,7 +70,11 @@ public class GameManager : MonoBehaviour
         isGameStarted = false;
         isGamePaused = false;
         Time.timeScale = 0f; //stops the game
-        MainMenu.gameObject.SetActive(true); //Goes back to the main menu and lets the player restart the game
+        gameOver.gameObject.SetActive(true);
         Debug.Log("Game Over");
+    }
+
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

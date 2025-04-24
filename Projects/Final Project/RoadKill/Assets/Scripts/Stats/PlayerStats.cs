@@ -1,10 +1,12 @@
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class PlayerStats : MonoBehaviour
 {
 
     public GameObject GameManager;
     public GameObject EnemyPrefab;
+    public TextMeshProUGUI Score;
 
     [Header("Stats")]
     public int health = 100;
@@ -18,6 +20,7 @@ public class PlayerStats : MonoBehaviour
     void Start() {
         GameManager = GameObject.Find("GameManager"); // used to talk to the game manager
         EnemyPrefab = GameObject.Find("EnemyPrefab");// used to talk to the enemy prefab
+     
     }
 
     //looks at the enemy prefab and gets the damage value from it
@@ -30,6 +33,7 @@ public class PlayerStats : MonoBehaviour
 
     public void AddMoney(int amount) {
         money += amount;
+        Score.text = string.Format("Money: ${money}", money);
     }
 
     public void Die() {
