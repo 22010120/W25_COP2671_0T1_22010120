@@ -29,8 +29,7 @@ public class SpawnManager : MonoBehaviour
             }
             
         }
-    
-
+        
     //spawn delay for spawning enemies
     IEnumerator spawnInSeconds()
     {
